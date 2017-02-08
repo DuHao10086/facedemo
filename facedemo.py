@@ -24,6 +24,9 @@
 # To run this file from the openface home dir:
 # ./demo/classifier_webcam.py <path-to-your-classifier>
 
+# Contributed by Du Hao, 8 Feb 2017
+# To build a face recognition based authorization system for home automation demo
+# Pefrom classification and broadcast commands via MQTT
 
 import time
 
@@ -185,6 +188,8 @@ if __name__ == '__main__':
     while True:
         ret, frame = video_capture.read()
         persons, confidences = infer(frame, args)
+        if float(confidences):
+            print
         print "P: " + str(persons) + " C: " + str(confidences)
         try:
             # append with two floating point precision
